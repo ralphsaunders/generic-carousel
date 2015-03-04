@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Slider experiment</title>
+
+        <!-- Third party stuff -->
+        <script src="https://code.angularjs.org/1.3.9/angular.min.js"></script>
+
+        <!-- Javascript -->
+        <script src="./app/controllers/demoController.js"></script>
+        <script src="./app/modules/demoModule.js"></script>
+        <script src="./app/directives/sliderDirective.js"></script>
+
+        <!-- CSS -->
+        <link href="./assets/css/styles.css" rel="stylesheet" media="screen" />
+
+        <meta name="viewport" content="initial-scale=1">
+    </head>
+    <body>
+        <script>
+            // Our source slides array. The controller binds this to a 'slides'
+            // model and passes it to the directive.
+            var slides = [
+                {
+                    url: 'http://placehold.it/1000x600',
+                    caption: 'Slide 0'
+                },
+                {
+                    url: 'http://placehold.it/1000x600',
+                    caption: 'Slide 1'
+                },
+                {
+                    url: 'http://placehold.it/1000x600',
+                    caption: 'Slide 2'
+                },
+                {
+                    url: 'http://placehold.it/1000x600',
+                    caption: 'Slide 3'
+                }
+            ];
+        </script>
+
+        <div data-ng-app="demo.module" data-ng-controller="demoController">
+            <div data-slider-directive data-slides="slides"></div>
+        </div>
+    </body>
+</html>
