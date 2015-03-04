@@ -16,6 +16,18 @@
                         slides: function slides() {
                             return $scope.slides;
                         },
+                        // Active slides display in the viewport.
+                        //
+                        // When a slide is `active` it has an `active` class
+                        // added to it.
+                        //
+                        // `.active` slides are given widths in CSS.
+                        //
+                        // All slides have a CSS transition which animates
+                        // the width.
+                        //
+                        // Changing the `active` boolean causes animations to
+                        // happen.
                         activeSlides: function activeSlides() {
                             return this.slides().filter(function(slide, index) {
                                 if(slide.active) {
@@ -23,6 +35,7 @@
                                 }
                             })
                         },
+                        // Flips active value on slides in provided array.
                         toggleActive: function toggleActive(array) {
                             if(!array) {
                                 var array = this.activeSlides();
@@ -34,6 +47,8 @@
 
                             return array;
                         },
+                        // Bound to a next button in the view.
+                        // Allows viewing of the slide 'to the right'
                         next: function next() {
                             // We're animating now! (used to block button
                             // clicks)
@@ -47,14 +62,14 @@
                                 // Move first slide to back
                                 slides().push(slides().shift());
 
-                                // Set next slide in viewport as active
-                                //toggleActive([slides()[2]]);
+                                animating.status = false;
 
                                 // Tell angular about the change
-                                animating.status = false;
                                 $scope.$apply();
                             }, 1000, this.slides, this.toggleActive, this.animating);
                         },
+                        // Bound to a prev button in the view.
+                        // Allows viewing of the slide 'to the left'
                         prev: function prev() {
                             // We're animating now! (used to block button
                             // clicks)
@@ -70,11 +85,11 @@
                             //
                             // This is because you seemingly can't insert into
                             // the DOM and start animating in the same frame.
-                            $window.setTimeout(function(slides, toggleActive, animating) {
+                            $window.setTimeout(function(slides, toggleActive) {
                                 toggleActive([slides()[0]]);
 
                                 $scope.$apply();
-                            }, 0, this.slides, this.toggleActive, this.animating);
+                            }, 0, this.slides, this.toggleActive);
 
                             // Finish animation
                             $window.setTimeout(function(slides, toggleActive, animating) {
@@ -82,11 +97,15 @@
                                 $scope.$apply();
                             }, 1000, this.slides, this.toggleActive, this.animating);
                         },
+                        // When status is set to true the buttons are disabled
+                        //
+                        // Has to be an object because we want changes to
+                        // status to allways modify this reference.
                         animating: {
-                           // Has to be an object because we want changes to
-                           // status to allways modify this reference
-                           status: false
+                            status: false
                         },
+                        // Disables slider functionality, causing slides to
+                        // stack.
                         disabled: false
                     };
 
