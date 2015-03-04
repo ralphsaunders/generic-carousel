@@ -29,7 +29,7 @@
                         // Changing the `active` boolean causes animations to
                         // happen.
                         activeSlides: function activeSlides() {
-                            return this.slides().filter(function(slide, index) {
+                            return this.slides().filter(function(slide) {
                                 if(slide.active) {
                                     return slide
                                 }
