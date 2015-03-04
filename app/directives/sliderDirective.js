@@ -5,6 +5,7 @@
         .directive('sliderDirective', ['$window', function($window) {
             return {
                 restrict: 'A',
+                replace: true,
                 templateUrl: '/app/templates/directives/sliderTemplate.html',
                 scope: {
                     slides: '=*'
