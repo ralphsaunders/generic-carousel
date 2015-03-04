@@ -100,7 +100,7 @@
                         // When status is set to true the buttons are disabled
                         //
                         // Has to be an object because we want changes to
-                        // status to allways modify this reference.
+                        // status to always modify this reference.
                         animating: {
                             status: false
                         },
