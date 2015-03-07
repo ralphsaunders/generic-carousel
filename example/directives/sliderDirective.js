@@ -29,7 +29,7 @@
                         // Changing the `active` boolean causes animations to
                         // happen.
                         activeSlides: function activeSlides() {
-                            return this.slides().filter(function(slide, index) {
+                            return this.slides().filter(function(slide) {
                                 if(slide.active) {
                                     return slide
                                 }
@@ -100,7 +100,7 @@
                         // When status is set to true the buttons are disabled
                         //
                         // Has to be an object because we want changes to
-                        // status to allways modify this reference.
+                        // status to always modify this reference.
                         animating: {
                             status: false
                         },
