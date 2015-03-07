@@ -1,0 +1,18 @@
+<div class="slider-mask">
+    <div class="slider-container" data-ng-class="{disabled: slider.disabled}">
+        <button type="button" data-ng-click="slider.prev()" data-ng-disabled="slider.animating.status" class="prev button" data-ng-if="!slider.disabled">
+            Previous
+        </button>
+
+        <div class="slides-wrapper">
+            <div class="slide" data-ng-repeat="slide in slides" data-ng-class="{active: slide.active}">
+                <img class="image" data-ng-src="{{slide.url}}" />
+                <span class="caption">{{slide.caption}}</span>
+            </div>
+        </div>
+
+        <button type="button" data-ng-click="slider.next()" data-ng-disabled="slider.animating.status" class="next button" data-ng-if="!slider.disabled">
+            Next
+        </button>
+    </div>
+</div>

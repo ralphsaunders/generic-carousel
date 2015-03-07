@@ -1,0 +1,26 @@
+{
+  "name": "generic-carousel",
+  "version": "0.0.0",
+  "homepage": "https://github.com/ralphsaunders/generic-carousel",
+  "authors": [
+    "Ralph Saunders <ralphcgsaunders@gmail.com>"
+  ],
+  "description": "It's a generic carousel!",
+  "main": "example/index.html",
+  "moduleType": [
+    "es6"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "angular": "1.3.14",
+    "angular-mocks": "~1.3.14"
+  }
+}

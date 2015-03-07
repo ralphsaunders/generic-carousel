@@ -6,7 +6,7 @@
             return {
                 restrict: 'A',
                 replace: true,
-                templateUrl: '/app/templates/directives/sliderTemplate.html',
+                templateUrl: '/example/templates/sliderTemplate.html',
                 scope: {
                     slides: '=*'
                 },
