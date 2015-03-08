@@ -23,13 +23,18 @@ module.exports = function(config) {
         // use dots reporter, as travis terminal does not support escaping sequences
         // possible values: 'dots', 'progress', 'junit', 'teamcity'
         // CLI --reporters progress
-        reporters : ['progress'],
+        reporters : ['progress', 'html'],
 
         plugins : [
             'karma-jasmine',
             'karma-chrome-launcher',
+            'karma-html-reporter',
             'karma-ng-html2js-preprocessor'
         ],
+
+        htmlReporter: {
+            outputDir: 'test/results'
+        },
 
         // web server port
         // CLI --port 9876

@@ -28,7 +28,7 @@ describe('generic carousel', function() {
         compile(elm)(scope);
         scope.$digest();
 
-        expect(elm.html()).toContain('200x200');
+        expect(elm[0].querySelector('.slide').innerHTML).toContain('200x200');
     });
 
     it('removes inlined images that were included for search engine indexes', function() {
@@ -112,7 +112,7 @@ describe('generic carousel', function() {
         expect(activeSlides.length).toBe(3);
     });
 
-    it('next makes next slide active', function() {
+    it('has a next button that makes the slide to the right active', function() {
         scope.slides = [
             {
                 url: 'http://placehold.it/1x1'
@@ -136,7 +136,7 @@ describe('generic carousel', function() {
         expect(elm[0].querySelectorAll('.slide')[0].classList.contains('active')).toBe(false);
     });
 
-    it('prev makes prev slide active', function() {
+    it('has a prev function that makes the slide to the left active', function() {
         scope.slides = [
             {
                 url: 'http://placehold.it/1x1'
