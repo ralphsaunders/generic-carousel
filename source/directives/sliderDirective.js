@@ -2,7 +2,7 @@
     'use strict';
 
     angular.module('slider.directive', [])
-        .directive('sliderDirective', ['$window', function($window) {
+        .directive('sliderDirective', ['$timeout', function($timeout) {
             return {
                 restrict: 'A',
                 replace: true,
@@ -58,15 +58,15 @@
                             this.toggleActive([this.slides()[0], this.slides()[3]]);
 
                             // Modify DOM after animation has completed
-                            $window.setTimeout(function(slides, toggleActive, animating) {
+                            $timeout(function() {
                                 // Move first slide to back
-                                slides().push(slides().shift());
+                                $scope.slider.slides().push($scope.slider.slides().shift());
 
-                                animating.status = false;
+                                $scope.slider.animating.status = false;
 
                                 // Tell angular about the change
                                 $scope.$apply();
-                            }, 1000, this.slides, this.toggleActive, this.animating);
+                            }, 1000);
                         },
                         // Bound to a prev button in the view.
                         // Allows viewing of the slide 'to the left'
@@ -85,17 +85,17 @@
                             //
                             // This is because you seemingly can't insert into
                             // the DOM and start animating in the same frame.
-                            $window.setTimeout(function(slides, toggleActive) {
-                                toggleActive([slides()[0]]);
+                            $timeout(function() {
+                                $scope.slider.toggleActive([$scope.slider.slides()[0]]);
 
                                 $scope.$apply();
-                            }, 0, this.slides, this.toggleActive);
+                            }, 0);
 
                             // Finish animation
-                            $window.setTimeout(function(slides, toggleActive, animating) {
-                                animating.status = false;
+                            $timeout(function() {
+                                $scope.slider.animating.status = false;
                                 $scope.$apply();
-                            }, 1000, this.slides, this.toggleActive, this.animating);
+                            }, 1000);
                         },
                         // When status is set to true the buttons are disabled
                         //
