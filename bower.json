@@ -6,7 +6,7 @@
     "Ralph Saunders <ralphcgsaunders@gmail.com>"
   ],
   "description": "It's a generic carousel!",
-  "main": "example/index.html",
+  "main": "source/",
   "moduleType": [
     "es6"
   ],
